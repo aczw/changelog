@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --fade-speed: 100ms;
+  }
+
+  html {
+    font-size: 15px;
+    @apply scroll-smooth bg-sweater-10 text-sweater-1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-sweater-2;
+  }
+
+  img {
+    @apply italic;
+  }
+
+  /* Only style elements rendered from Markdown */
+  article {
+    & p {
+      text-wrap: pretty;
+    }
+
+    & img {
+      @apply rounded-lg bg-sweater-9;
+    }
+
+    /* inline code should have some padding and background */
+    & code {
+      @apply break-words rounded-md bg-sweater-9 px-1 py-0.5 text-[13px] font-[100];
+    }
+
+    /* treat code differently inside callouts, but let utilities override it */
+    & aside {
+      & code {
+        @apply bg-sweater-8;
+      }
+    }
+
+    & pre {
+      @apply rounded-lg p-4;
+
+      /* but remove padding, background, and word breaks in code blocks */
+      > code {
+        @apply break-normal bg-transparent p-0;
+      }
+    }
+
+    & del {
+      @apply cursor-not-allowed text-sweater-6 line-through;
+    }
+
+    & li {
+      @apply pl-3;
+    }
+
+    & ul,
+    ol {
+      @apply ml-3 list-outside space-y-2;
+
+      ::marker {
+        @apply text-sweater-4;
+      }
+
+      > li {
+        @apply break-words;
+      }
+    }
+
+    & ul {
+      list-style-type: "➔";
+    }
+
+    & ol {
+      list-style-type: decimal;
+    }
+
+    & figure {
+      font-size: 0.92rem;
+      @apply subtitle space-y-2 transition-[color,opacity];
+
+      &:hover {
+        @apply text-sweater-1;
+      }
+    }
+
+    @media (min-width: 480px) {
+      & ul,
+      ol {
+        @apply ml-6;
+      }
+
+      & li {
+        @apply pl-4;
+      }
+    }
+  }
+
+  @font-face {
+    font-family: "Berkeley Mono Variable";
+    src: url("/_fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2-variations");
+    font-weight: 100 150;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Berkeley Mono Variable";
+    src: url("/_fonts/BerkeleyMonoVariable-Italic.woff2") format("woff2-variations");
+    font-weight: 100 150;
+    font-style: italic;
+  }
+}
+
+@layer components {
+  .pill {
+    @apply rounded-full bg-sweater-4 px-3 py-1.5 text-sweater-8 transition-colors hover:bg-sweater-3;
+  }
+
+  .pill[data-quiet] {
+    @apply bg-sweater-9 text-sweater-4 hover:bg-sweater-8 hover:text-sweater-3;
+  }
+}
+
+@layer utilities {
+  .berkeley {
+    font-size: 13.5px;
+    font-weight: 120;
+    @apply font-mono;
+  }
+
+  .subtitle {
+    @apply text-sweater-2/85;
+  }
+}
