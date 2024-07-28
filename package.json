@@ -39,6 +39,8 @@
     "typescript": "^5.5.3"
   },
   "trustedDependencies": [
-    "@vercel/speed-insights"
+    "@vercel/speed-insights",
+    "esbuild",
+    "sharp"
   ]
 }
