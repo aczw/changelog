@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -39,7 +39,7 @@ function contentRoutes() {
 
 const config = defineConfig({
   site: SITE_NAME,
-  output: "server",
+  output: "static",
   adapter: vercel({
     imageService: true,
     imagesConfig: {
@@ -68,3 +68,5 @@ const config = defineConfig({
 });
 
 export default config;
+
+export { SITE_NAME };

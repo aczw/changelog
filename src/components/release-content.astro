@@ -2,8 +2,11 @@
 import type { HTMLAttributes } from "astro/types";
 import type { CollectionEntry } from "astro:content";
 
+import Aside from "@/components/mdx/aside.astro";
+import H2 from "@/components/mdx/h2.astro";
+import H3 from "@/components/mdx/h3.astro";
+
 import Link from "@/components/link.astro";
-import CustomContent from "@/components/mdx/content/custom-content.astro";
 
 import { Calendar, CircleArrowUp, GitCommitHorizontal } from "lucide-astro";
 
@@ -13,8 +16,8 @@ type Props = {
 } & Omit<HTMLAttributes<"article">, "class">;
 
 let { release, className, ...props } = Astro.props;
-let { Content } = await release.render();
 
+let { Content } = await release.render();
 let {
   data: { version, date, commit },
 } = release;
@@ -99,6 +102,13 @@ let tallEnough = version !== "v0.1.0";
   </section>
 
   <section class="mb-12 w-full space-y-6 sm:mt-12 sm:w-3/4">
-    <CustomContent entryContent={Content} />
+    <Content
+      components={{
+        h2: H2,
+        h3: H3,
+        blockquote: Aside,
+        a: Link,
+      }}
+    />
   </section>
 </article>

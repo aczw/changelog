@@ -1,14 +1,13 @@
 ---
 import "@/styles/base.css";
-import "@fontsource/atkinson-hyperlegible/400.css";
-import "@fontsource/atkinson-hyperlegible/700.css";
 
 import type { CollectionEntry } from "astro:content";
+import { SITE_NAME } from "astro.config";
 
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 type MetaKind =
-  | { kind: "route"; title: string | null; description: string; ogImageParams: string }
+  | { kind: "route"; title: string | null; description: string }
   | { kind: "release"; release: CollectionEntry<"changelog"> };
 
 interface Props {
@@ -17,31 +16,31 @@ interface Props {
 
 let { meta } = Astro.props;
 
-let title = "Charles Wang";
+let title = "Changelog";
 let description: string;
-let ogImageParams: string;
 
 switch (meta.kind) {
   case "route": {
-    title = (meta.title ? meta.title + " — " : "") + title;
+    title = (meta.title ? meta.title + " ⦻ " : "") + title;
     description = meta.description;
-    ogImageParams = `?heading=${encodeURIComponent(meta.ogImageParams)}`;
     break;
   }
 
   case "release": {
-    let { data, slug } = meta.release;
-    title = `Website release ${data.version} — ${title}`;
-    description = `Notable changes in the ${data.version} release of this website.`;
-    ogImageParams = `?release=${slug}`;
+    let {
+      data: { version },
+    } = meta.release;
+
+    title = `Website release ${version} — ${title}`;
+    description = `Notable changes in the ${version} release of this website.`;
     break;
   }
 
   default:
-    throw new Error("Unreachable!");
+    throw new Error("Unreachable default switch case!");
 }
 
-// see https://github.com/withastro/astro/issues/5248
+// See https://github.com/withastro/astro/issues/5248
 let canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 canonicalUrl = canonicalUrl.replace(/\/+$/, "");
 ---
@@ -56,15 +55,15 @@ canonicalUrl = canonicalUrl.replace(/\/+$/, "");
 
     <meta name="color-scheme" content="dark light" />
 
-    <meta property="og:site_name" content="Charles Wang" />
+    <meta property="og:site_name" content="Changelog" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content={`https://charleszw.com/api/og.png${ogImageParams}`} />
+    <meta property="og:image" content={`${SITE_NAME}/og.png`} />
 
-    <meta property="twitter:image" content={`https://charleszw.com/api/og.png${ogImageParams}`} />
+    <meta property="twitter:image" content={`${SITE_NAME}/og.png`} />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />

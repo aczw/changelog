@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-astro";
 import BaseLayout from "@/layouts/base-layout.astro";
 
 import Link from "@/components/link.astro";
-import ReleaseContent from "@/components/mdx/content/release-content.astro";
+import ReleaseContent from "@/components/release-content.astro";
 
 let releases = await getCollection("changelog");
 releases.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -19,32 +19,31 @@ let previous = releases[1];
     kind: "route",
     title: "Changelog",
     description: "All the updates I've made to my website, organized as a series of patch notes.",
-    ogImageParams: "Release notes for this website.",
   }}
 >
   <main class="mx-auto max-w-content px-7 py-12">
     <div>
-      <h1 class="mb-1.5 animate-fade text-xl [--order:0]">Changelog</h1>
+      <h1 class="mb-1.5 text-xl">Changelog</h1>
 
-      <div class="mb-12 grid grid-cols-1 gap-6 xs:grid-cols-2">
-        <p class="animate-fade [--order:1]">
+      <div class="xs:grid-cols-2 mb-12 grid grid-cols-1 gap-6">
+        <p class="">
           All the updates I've made to this site, organized as a series of patch notes. See <Link
             href="https://charleszw.com/posts/changelogs"
             target="_blank">my post</Link
           > on changelogs for more context.
         </p>
-        <p class="subtitle animate-fade [--order:2]">
+        <p class="subtitle">
           Only the most recent release is shown here. Feel free to visit any older versions via the
           links below.
         </p>
       </div>
 
       <ul
-        class="pointer-events-none grid grid-cols-4 gap-y-1 border-y-thin border-sweater-9 py-6 [--fade-speed:30ms] xs:grid-cols-5 sm:grid-cols-6 content:grid-cols-7 [&>li:not(:hover)]:hover:brightness-[65%]"
+        class="border-y-thin xs:grid-cols-5 pointer-events-none grid grid-cols-4 gap-y-1 border-sweater-9 py-6 sm:grid-cols-6 content:grid-cols-7 [&>li:not(:hover)]:hover:brightness-[65%]"
       >
         {
           releases.map(({ data: { version }, slug }, index) => (
-            <li class="animate-fade transition-[filter]" style={{ "--order": index }}>
+            <li class="transition-[filter]" style={{ "--order": index }}>
               <Link
                 href={`/${slug}`}
                 className="pointer-events-auto transition-[filter,opacity,color]"
@@ -57,18 +56,18 @@ let previous = releases[1];
       </ul>
     </div>
 
-    <div class="relative flex flex-col [--fade-speed:70ms]">
-      <ReleaseContent release={releases[0]} className="animate-fade border-sweater-9 [--order:0]" />
+    <div class="relative flex flex-col">
+      <ReleaseContent release={releases[0]} className="border-sweater-9" />
 
-      <div class="flex flex-col gap-3 border-t-thin border-sweater-9 pt-12 xs:flex-row xs:gap-6">
-        <div class="w-full animate-fade [--order:0] xs:w-1/5">
+      <div class="border-t-thin xs:flex-row xs:gap-6 flex flex-col gap-3 border-sweater-9 pt-12">
+        <div class="xs:w-1/5 w-full">
           <h2>More releases</h2>
           <p class="subtitle">Previous changelog</p>
         </div>
 
         <a
           href={`/changelog/${previous.slug}`}
-          class="group flex w-full animate-fade items-center justify-between rounded-lg bg-sweater-9 p-4 transition-colors [--order:1] hover:bg-sweater-8 xs:w-4/5"
+          class="xs:w-4/5 group flex w-full items-center justify-between rounded-lg bg-sweater-9 p-4 transition-colors hover:bg-sweater-8"
         >
           <div>
             <p

@@ -3,26 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --fade-speed: 100ms;
+  @font-face {
+    font-family: "Berkeley Mono Variable";
+    src: url("/_fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2-variations");
+    font-weight: 100 150;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Berkeley Mono Variable";
+    src: url("/_fonts/BerkeleyMonoVariable-Italic.woff2") format("woff2-variations");
+    font-weight: 100 150;
+    font-style: italic;
   }
 
   html {
     font-size: 15px;
-    @apply scroll-smooth bg-sweater-10 text-sweater-1;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold text-sweater-2;
+    @apply font-100 bg-sweater-7 font-mono tracking-tight text-sweater-1;
   }
 
   img {
     @apply italic;
+  }
+
+  a {
+    text-decoration-line: underline;
   }
 
   /* Only style elements rendered from Markdown */
@@ -104,20 +109,6 @@
         @apply pl-4;
       }
     }
-  }
-
-  @font-face {
-    font-family: "Berkeley Mono Variable";
-    src: url("/_fonts/BerkeleyMonoVariable-Regular.woff2") format("woff2-variations");
-    font-weight: 100 150;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "Berkeley Mono Variable";
-    src: url("/_fonts/BerkeleyMonoVariable-Italic.woff2") format("woff2-variations");
-    font-weight: 100 150;
-    font-style: italic;
   }
 }
 
