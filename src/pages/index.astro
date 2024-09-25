@@ -13,6 +13,8 @@ let releases = await getCollection("changelog");
 releases.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 let previous = releases[1];
+
+const rightNow = new Date();
 ---
 
 <BaseLayout
@@ -24,42 +26,65 @@ let previous = releases[1];
 >
   <Header />
 
-  <main class="py-8">
-    <div>
-      <div class="xs:grid-cols-2 mb-12 grid grid-cols-1 gap-6">
+  <main class="space-y-10 pb-8 pt-2.5">
+    <section class="space-y-2.5">
+      <div class="flex w-full justify-between bg-sweater-4 px-1 uppercase text-sweater-7">
+        <p>Page / [Root]</p>
+        <p>
+          Last updated {
+            rightNow.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            })
+          }
+        </p>
+        <p>
+          {
+            rightNow.toLocaleTimeString("en-US", {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+              timeZone: "America/New_York",
+              timeZoneName: "short",
+              hour12: false,
+            })
+          }
+        </p>
+      </div>
+      <div class="h-5 w-full bg-sweater-4"></div>
+    </section>
+
+    <section>
+      <div class="xs:grid-cols-2 grid grid-cols-1 gap-6">
         <p>
           Hi! Here I share interesting updates I've made to my personal site, <Link
             href="https://charleszw.com"
             target="_blank">charleszw.com</Link
-          >. They're organized as a series of patch notes.
+          >. They're organized as a series of versioned releases.
         </p>
         <p class="subtitle">
           See <Link href="https://charleszw.com/posts/changelogs" target="_blank">this post</Link> for
-          more context. Only the most recent release is shown. You can visit any older versions via the
-          links below.
+          more context. Only the most recent release is shown. You can visit any older patch notes via
+          the links below.
         </p>
       </div>
+    </section>
 
-      <ul
-        class="border-y-thin xs:grid-cols-5 pointer-events-none grid grid-cols-4 gap-y-1 border-sweater-9 py-6 sm:grid-cols-6 content:grid-cols-7 [&>li:not(:hover)]:hover:brightness-[65%]"
-      >
-        {
-          releases.map(({ data: { version }, slug }, index) => (
-            <li class="transition-[filter]" style={{ "--order": index }}>
-              <Link
-                href={`/${slug}`}
-                className="pointer-events-auto transition-[filter,opacity,color]"
-              >
-                {version}
-              </Link>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <ul
+      class="xs:rounded-full xs:px-20 xs:grid-cols-4 grid grid-cols-3 gap-2 rounded-3xl bg-sweater-8 px-4 py-6 sm:grid-cols-5"
+    >
+      {
+        releases.map(({ data: { version }, slug }) => (
+          <li class="text-center">
+            <Link href={`/${slug}`}>{version}</Link>
+          </li>
+        ))
+      }
+    </ul>
 
     <div class="relative flex flex-col">
-      <ReleaseContent release={releases[0]} className="border-sweater-9" />
+      <ReleaseContent release={releases[0]} className="-translate-y-12" />
 
       <div class="border-t-thin xs:flex-row xs:gap-6 flex flex-col gap-3 border-sweater-9 pt-12">
         <div class="xs:w-1/5 w-full">
@@ -68,7 +93,7 @@ let previous = releases[1];
         </div>
 
         <a
-          href={`/changelog/${previous.slug}`}
+          href={`/${previous.slug}`}
           class="xs:w-4/5 group flex w-full items-center justify-between rounded-lg bg-sweater-9 p-4 transition-colors hover:bg-sweater-8"
         >
           <div>
