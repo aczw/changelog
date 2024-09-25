@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-astro";
 
 import BaseLayout from "@/layouts/base-layout.astro";
 
-import Logo from "@/components/logo.astro";
+import Header from "@/components/header.astro";
 import Link from "@/components/link.astro";
 import ReleaseContent from "@/components/release-content.astro";
 
@@ -22,19 +22,20 @@ let previous = releases[1];
     description: "All the updates I've made to my website, organized as a series of patch notes.",
   }}
 >
-  <main class="mx-auto max-w-content px-7 py-12">
-    <Logo />
+  <Header />
 
+  <main class="py-8">
     <div>
       <div class="xs:grid-cols-2 mb-12 grid grid-cols-1 gap-6">
         <p>
-          All the updates I've made to this site, organized as a series of patch notes. See <Link
-            href="https://charleszw.com/posts/changelogs"
-            target="_blank">my post</Link
-          > on changelogs for more context.
+          Hi! Here I share interesting updates I've made to my personal site, <Link
+            href="https://charleszw.com"
+            target="_blank">charleszw.com</Link
+          >. They're organized as a series of patch notes.
         </p>
         <p class="subtitle">
-          Only the most recent release is shown here. Feel free to visit any older versions via the
+          See <Link href="https://charleszw.com/posts/changelogs" target="_blank">this post</Link> for
+          more context. Only the most recent release is shown. You can visit any older versions via the
           links below.
         </p>
       </div>

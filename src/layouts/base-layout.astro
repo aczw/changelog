@@ -5,6 +5,7 @@ import type { CollectionEntry } from "astro:content";
 import { SITE_NAME } from "astro.config";
 
 import SpeedInsights from "@vercel/speed-insights/astro";
+import Footer from "@/components/footer.astro";
 
 type MetaKind =
   | { kind: "route"; title: string | null; description: string }
@@ -88,12 +89,15 @@ canonicalUrl = canonicalUrl.replace(/\/+$/, "");
       as="font"
       type="font/woff2"
       crossorigin
-    /><title>{title}</title></head
-  >
+    />
 
-  <SpeedInsights />
+    <title>{title}</title>
 
-  <body>
+    <SpeedInsights />
+  </head>
+
+  <body class="mx-auto max-w-content px-7">
     <slot />
+    <Footer />
   </body>
 </html>
