@@ -9,7 +9,7 @@ import { existsSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const SITE_NAME = "https://log.charleszw.com";
+const SITE_NAME = "https://changelog.charleszw.com";
 
 /**
  * @see https://github.com/withastro/astro/issues/3682#issuecomment-1492468918
