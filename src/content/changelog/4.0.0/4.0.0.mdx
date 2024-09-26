@@ -1,11 +1,11 @@
 ---
-version: "v4.0.0"
+version: "4.0.0"
 date: 2024-07-16T07:01:00.000-05
+commit: db4896fac12a8a95e44e817322de0129f167d3c7
 
 slug: "4.0.0"
 ---
 
-import Border from "@/components/mdx/border.astro";
 import VideoGif from "@/components/video-gif.astro";
 
 Hey hey we're on v4 now! Welcome.
@@ -13,9 +13,7 @@ Hey hey we're on v4 now! Welcome.
 I'm definitely taking a break from touching the website code after this. This release took a solid month to finish and I'm tired of writing about the past (you'll see what I mean). There's so much new stuff I want to talk about.
 
 <figure class="mx-auto max-w-[550px]">
-  <Border>
-    ![The GitHub PR for this release has 110+ commits and over 125 files changed.](many-commits.png)
-  </Border>
+  ![The GitHub PR for this release has 110+ commits and over 125 files changed.](many-commits.png)
   <figcaption>
     **The PR for this release.** I know I'm a chronic committer, but 11X commits is more than 25% of
     the total commits made to this site _ever._
@@ -105,9 +103,7 @@ I've slightly increased the site width, to 850px. The smaller post width has alw
 
 > This is perfect because if I were to render the Markdown content at full width it would be a bit uncomfortable to read. [I've talked about this before.](/changelog/1.3.0#collapsing-the-grid-on-mobile)
 
-<Border>
-  <VideoGif folder="4.0.0" name="toc-demo" />
-</Border>
+<VideoGif folder="4.0.0" name="toc-demo" />
 
 One thing I like in particular is that if there's not enough vertical screen space, the table of contents will overflow and gain a scrollbar. I spent a painstakingly long time getting the headings to smoothly fade in and out at the top and bottom.
 

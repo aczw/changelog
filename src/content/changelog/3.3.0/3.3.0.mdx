@@ -1,21 +1,18 @@
 ---
-version: "v3.3.0"
+version: "3.3.0"
 date: 2024-05-30T07:51:00.000Z
 commit: "d830237fb29a615b9789640f4db8eab8b5614b36"
 
 slug: "3.3.0"
 ---
 
-import Border from "@/components/mdx/border.astro";
 import VideoGif from "@/components/video-gif.astro";
 
 ## Text animation
 
 ~~Literally copied from~~ Inspired by [rauno.me's project page](https://rauno.me/projects), I wanted to see if I could achieve a similar effect. It's probably not very efficient (I'm doing a _lot_ of JS string concatenation), but the final effect looks pretty good.
 
-<Border>
-  <VideoGif content={{ collection: "changelog", folder: "v3.3.0" }} name="text-ani" />
-</Border>
+<VideoGif folder="3.3.0" name="text-ani" />
 
 This took me so long to figure out. Lots of off-by-one index errors. I can usually figure things out in my head but this was a pen and paper moment.
 
@@ -27,9 +24,7 @@ For a page that's supposed to list every post I've ever made, it's not very spac
 
 You'll see this on the homepage as well, but if you're on desktop try hovering over a post. You'll see that every element _not_ being hovered will dim.
 
-<Border>
-  <VideoGif content={{ collection: "changelog", folder: "v3.3.0" }} name="hover-ani" />
-</Border>
+<VideoGif folder="3.3.0" name="hover-ani" />
 
 After seeing it in action on [paco.me's writing page](https://paco.me/writing), I wanted to ~~copyright infringe it~~ try recreating it, and I think I was successful.
 
@@ -164,7 +159,7 @@ I've also set it up so I can enter custom content.
 ```
 
 <figure>
-  <Border>![OG image that says Charles Wang and "my pee pee hurts"](og-img-gen.png)</Border>
+  ![OG image that says Charles Wang and "my pee pee hurts"](og-img-gen.png)
   <figcaption>**The custom content in question.** I'm putting the feature to good use.</figcaption>
 </figure>
 

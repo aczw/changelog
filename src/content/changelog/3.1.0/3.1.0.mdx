@@ -1,12 +1,11 @@
 ---
-version: "v3.1.0"
+version: "3.1.0"
 date: 2024-04-03T09:18:00.000Z
 commit: "b67f515ab5f1cf1383e1d0b4a1315d80f1a13c87"
 
 slug: "3.1.0"
 ---
 
-import Border from "@/components/mdx/border.astro";
 import VideoGif from "@/components/video-gif.astro";
 
 ## SSR and 404
@@ -71,7 +70,7 @@ That's it. Problem is, this also changes the URL to `/404`, because I'm redirect
 
 Previously, the cover images for each project was hidden behind a blur effect that only cleared up upon hover. I say, screw that! If anything should take up more space on my homepage, it should be my posts. So now they're fully shown.
 
-<Border>![Every project has its cover image fully shown.](v3.1.0-homepage.png)</Border>
+![Every project has its cover image fully shown.](v3.1.0-homepage.png)
 
 To keep the grid nice looking, I maintain a 16:10 aspect ratio on the images. The cool thing is, I can enforce this within Astro as well. In the Astro collection schema for my posts, I check the width and height of the cover image.
 
@@ -118,15 +117,11 @@ If I'm going to show them on my website, I want to do them justice. Simple blurb
 
 I kind of missed having blurbs accompanying each project on the homepage. But I don't want to clutter it by default. So I tried something else out.
 
-<Border>
-  <VideoGif content={{ collection: "changelog", folder: "v3.1.0" }} name="blurb-drawer-single" />
-</Border>
+<VideoGif folder="3.1.0" name="blurb-drawer-single" />
 
 And in action on the homepage:
 
-<Border>
-  <VideoGif content={{ collection: "changelog", folder: "v3.1.0" }} name="blurb-drawer" />
-</Border>
+<VideoGif folder="3.1.0" name="blurb-drawer" />
 
 It turns out that animating an element to expand upwards [is not trivial](https://www.google.com/search?q=css%20height%20grow%20upwards). What made it harder is that none of the answers I found online were exactly what I was looking for; a "simple flexbox" wasn't going to cut it.
 

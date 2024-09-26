@@ -54,12 +54,12 @@ let { release, next, previous } = Astro.props;
       <ReleaseContent release={release} />
     </div>
 
-    <div class="border-t-thin xs:flex-row xs:gap-7 flex flex-col gap-3.5 border-sweater-9 pt-12">
+    <div class="border-t-thin flex flex-col gap-3.5 border-sweater-9 pt-12 xs:flex-row xs:gap-7">
       {
         next ? (
           <a
-            class="xs:w-1/2 xs:py-4 group flex w-full items-center gap-4 rounded-lg bg-sweater-9 px-4 py-2 transition-colors hover:bg-sweater-8"
-            href={`/${next.slug}`}
+            class="group flex w-full items-center gap-4 rounded-lg bg-sweater-9 px-4 py-2 transition-colors hover:bg-sweater-8 xs:w-1/2 xs:py-4"
+            href={`/v/${next.slug}`}
           >
             <div
               aria-hidden="true"
@@ -85,7 +85,7 @@ let { release, next, previous } = Astro.props;
             </div>
           </a>
         ) : (
-          <div class="berkeley border-thin xs:flex hidden w-1/2 items-center rounded-lg border-dashed border-sweater-9 bg-sweater-9/25 px-4 text-sweater-8">
+          <div class="berkeley border-thin hidden w-1/2 items-center rounded-lg border-dashed border-sweater-9 bg-sweater-9/25 px-4 text-sweater-8 xs:flex">
             End of time...
           </div>
         )
@@ -94,8 +94,8 @@ let { release, next, previous } = Astro.props;
       {
         previous ? (
           <a
-            class="xs:w-1/2 xs:py-4 group flex w-full items-center justify-end gap-4 rounded-lg bg-sweater-9 p-2 px-4 py-2 transition-colors hover:bg-sweater-8"
-            href={`/${previous.slug}`}
+            class="group flex w-full items-center justify-end gap-4 rounded-lg bg-sweater-9 p-2 px-4 py-2 transition-colors hover:bg-sweater-8 xs:w-1/2 xs:py-4"
+            href={`/v/${previous.slug}`}
           >
             <div class="text-right">
               <p class="font-mono font-[150] text-sweater-5 transition-colors group-hover:text-sweater-4">
@@ -121,7 +121,7 @@ let { release, next, previous } = Astro.props;
             </div>
           </a>
         ) : (
-          <div class="berkeley border-thin xs:flex hidden w-1/2 items-center justify-end rounded-lg border-dashed border-sweater-9 bg-sweater-9/25 px-4 text-sweater-8">
+          <div class="berkeley border-thin hidden w-1/2 items-center justify-end rounded-lg border-dashed border-sweater-9 bg-sweater-9/25 px-4 text-sweater-8 xs:flex">
             Beginning of time...
           </div>
         )

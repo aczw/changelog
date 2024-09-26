@@ -1,12 +1,11 @@
 ---
-version: "v3.2.0"
+version: "3.2.0"
 date: 2024-04-24T08:10:00.000Z
 commit: "afe802f237d8dda845149d757214d50c96aece70"
 
 slug: "3.2.0"
 ---
 
-import Border from "@/components/mdx/border.astro";
 import VideoGif from "@/components/video-gif.astro";
 
 ## Bundows
@@ -34,9 +33,7 @@ It is with a heavy heart that I announce the removal of the blurb drawer experim
 Since the initial release, I fixed numerous issues around the drawer, including breakages on mobile, small gaps between the bar and image, as well as simplifying the CSS and HTML attributes needed to make it work.
 
 <figure>
-  <Border>
-    <VideoGif content={{ collection: "changelog", folder: "v3.2.0" }} name="blurb-resizing" />
-  </Border>
+  <VideoGif folder="3.2.0" name="blurb-resizing" />
   <figcaption>
     **The bottom bars "jump" while resizing.** I'll try my best to find a JS-less solution, which
     was the root cause of my problems.
@@ -78,9 +75,7 @@ export default config;
 
 So after a bit of tinkering I ended up with this:
 
-<Border>
-  <VideoGif content={{ collection: "changelog", folder: "v3.2.0" }} name="view-transitions" />
-</Border>
+<VideoGif folder="3.2.0" name="view-transitions" />
 
 I'm not gonna lie, it's pretty slick. One issue I'm facing is that the transitions are sorta slow? There is a noticeable delay between clicking a link and the transition occurring. Sometimes, it can take several _seconds_. This didn't happen before enabling it.
 

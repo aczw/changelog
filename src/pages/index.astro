@@ -56,7 +56,7 @@ const rightNow = new Date();
     </section>
 
     <section>
-      <div class="xs:grid-cols-2 grid grid-cols-1 gap-6">
+      <div class="grid grid-cols-1 gap-6 xs:grid-cols-2">
         <p>
           Hi! Here I share interesting updates I've made to my personal site, <Link
             href="https://charleszw.com"
@@ -72,12 +72,12 @@ const rightNow = new Date();
     </section>
 
     <ul
-      class="xs:rounded-full xs:px-20 xs:grid-cols-4 grid grid-cols-3 gap-2 rounded-3xl bg-sweater-8 px-4 py-6 sm:grid-cols-5"
+      class="grid grid-cols-3 gap-2 rounded-3xl bg-sweater-8 px-4 py-6 xs:grid-cols-4 xs:rounded-full xs:px-20 sm:grid-cols-5"
     >
       {
         releases.map(({ data: { version }, slug }) => (
           <li class="text-center">
-            <Link href={`/${slug}`}>{version}</Link>
+            <Link href={`/v/${slug}`}>{version}</Link>
           </li>
         ))
       }
@@ -86,15 +86,15 @@ const rightNow = new Date();
     <div class="relative flex flex-col">
       <ReleaseContent release={releases[0]} className="-translate-y-12" />
 
-      <div class="border-t-thin xs:flex-row xs:gap-6 flex flex-col gap-3 border-sweater-9 pt-12">
-        <div class="xs:w-1/5 w-full">
+      <div class="border-t-thin flex flex-col gap-3 border-sweater-9 pt-12 xs:flex-row xs:gap-6">
+        <div class="w-full xs:w-1/5">
           <h2>More releases</h2>
           <p class="subtitle">Previous changelog</p>
         </div>
 
         <a
-          href={`/${previous.slug}`}
-          class="xs:w-4/5 group flex w-full items-center justify-between rounded-lg bg-sweater-9 p-4 transition-colors hover:bg-sweater-8"
+          href={`/v/${previous.slug}`}
+          class="group flex w-full items-center justify-between rounded-lg bg-sweater-9 p-4 transition-colors hover:bg-sweater-8 xs:w-4/5"
         >
           <div>
             <p
